@@ -1,0 +1,17 @@
+ul{
+    list-style-type: none;
+}
+
+ul li{
+    border-bottom: 1px solid gray;
+}
+
+div#input-container{
+    width: 500px;
+}
+
+div#my-list{
+    background-color:rgb(231, 231, 220);
+    width: 630px;
+    min-height: 250px;
+}
