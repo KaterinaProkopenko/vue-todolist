@@ -18,24 +18,31 @@
     <title>Vue To Do List</title>
 </head>
 <body>
-    <main>
+    <main id="app">
         <div class="container-fluid">
             <div class="row p-5">
+                <div class="col text-center text-danger">
+                    <p id="warn" class="mb-1"></p>
+                </div>
                 <div class="col-12 d-flex justify-content-center mb-4">
+
                     <div id="input-container" class="input-group me-3">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input v-model="newContent" type="text" class="form-control" placeholder="Username">
                     </div>
-                    <button type="button" class="btn btn-secondary">Secondary</button>
+                    <button @click="addContent(newContent)" type="button" class="btn btn-secondary">Aggiungere</button>
                 </div>
                 <div class="col-12 d-flex justify-content-center">
                     <div id="my-list" class="rounded-3">
-                        <ul class="fs-4 px-3 py-2 mb-0">
-                            <li class="d-flex justify-content-between">
-                                Ciao
-                                <span class="fs-5 pt-1"><i class="fa-solid fa-xmark"></i></span>
+                        <ul class="fs-4 px-3 py-2 mb-0" v-if="list.length >= 1">
+                            <li class="d-flex justify-content-between" v-for="(element, index) in list">
+                                <p class="contentTodo">{{element.text}}</p>
+                                <div class="fs-5 pt-1">
+                                    <span @click="cancelContent(element['done'])" class="me-1"><i class="fa-solid fa-check"></i></span>
+                                    <span @click="removeContent(index)"><i class="fa-solid fa-xmark"></i></span>
+                                </div>
                             </li>
                         </ul>
-                        <h2 class="ps-5">Scrivi qualcosa</h2>
+                        <h2 class="ps-5" v-else>Scrivi qualcosa</h2>
                     </div>
                 </div>
             </div>

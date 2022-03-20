@@ -15,3 +15,7 @@ div#my-list{
     width: 630px;
     min-height: 250px;
 }
+
+.canceled {
+    text-decoration: line-through;
+}
