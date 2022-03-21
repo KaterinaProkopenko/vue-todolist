@@ -20,21 +20,28 @@ const app = new Vue({
         },
 
         removeContent(indexElement){
-            this.list.splice(indexElement, 1);
+            if(this.list[indexElement] !== undefined){
+                this.list.splice(indexElement, 1);
+            }else{
+                console.log('elemento non esiste');
+            }
+            
         },
 
-        cancelContent(elementDone){
-            elementDone = !elementDone;
-            const text = document.querySelector('p.contentTodo');
-            text.style.textDecoration = 'line-through';
+        doneContent(indexDone){
+            if(this.list[indexDone] !== undefined){
+                this.list[indexDone].done = !this.list[indexDone].done;
+                console.log(this.list[indexDone].done)
+            }else {
+                console.log('elemento non esiste');
+            }
+            
             /* const text = document.querySelector('p.contentTodo');
             text.classList.add('canceled'); */
             /* elementText.style.textDecoration = 'line-through'; */
             /* contentElementLi.done = contentContent;
             contentTodo = true;
             contentTodo.style.textDecoration = 'line-through'; */
-            console.log(elementDone);
-            console.log(text);
 
         }
     }
